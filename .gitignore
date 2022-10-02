@@ -4,7 +4,7 @@ Thumbs.db
 $RECYCLE.BIN/
 
 # macOS
-.DS_Store
+**/.DS_Store
 .fseventsd
 .Spotlight-V100
 .TemporaryItems
@@ -18,3 +18,4 @@ manifest.json
 
 # 构建的代码包
 unpackage/dist/
+.hbuilderx/
