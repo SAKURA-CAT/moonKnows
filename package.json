@@ -1,0 +1,23 @@
+{
+  "name": "moonknows",
+  "version": "1.0.0",
+  "description": "cuny开发的第一个小程序～",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SAKURA-CAT/moonKnows.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SAKURA-CAT/moonKnows/issues"
+  },
+  "homepage": "https://github.com/SAKURA-CAT/moonKnows#readme",
+  "dependencies": {
+    "@escook/request-miniprogram": "^0.2.1"
+  }
+}
