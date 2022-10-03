@@ -1,29 +1,33 @@
 <template>
-  <view class="cate-scroll-container">
-    <!-- 左侧的滑动区域 -->
-    <scroll-view class="cate-left-scroll" scroll-y="true" :style="{height: wh + 'px'}">
-      <block v-for="(item, i) in cateListLevel1" :key="i">
-        <view :class="['cate-left-scroll-item', i === active? 'active': '']" @click="activeChange(i)">{{item.cat_name}}</view>
-      </block>
-    </scroll-view>
-    <!-- 右侧的滑动区域 -->
-    <scroll-view class="cate-right-scroll" scroll-y="true" :style="{height: wh + 'px'}" :scroll-top="scrollTop">
-      <view class="cate-right-v2" v-for="(item2, i2) in cateListLevel2" :key="i2">
-        <!-- 二级标题 -->
-        <block v-if="item2.children">
-          <view class="cate-right-v2-title">/  {{item2.cat_name}}  /</view>
-          <!-- 三级元素 -->
-          <view class="cate-right-v3-list">
-            <view class="cate-right-v3-item" v-for="(item3, i3) in item2.children" :key="i3" @click="gotoGoodsList(item3.cat_id)">
-              <!-- 图片 -->
-              <image :src="item3.cat_icon.replace('dev', 'web')"></image>
-              <!-- 文本 -->
-              <text>{{item3.cat_name}}</text>
-            </view>
-          </view>
+  <!-- 使用自定义的搜索组件 -->
+  <view>
+    <my-search @click="gotoSearch()"></my-search>
+    <view class="cate-scroll-container">
+      <!-- 左侧的滑动区域 -->
+      <scroll-view class="cate-left-scroll" scroll-y="true" :style="{height: wh + 'px'}">
+        <block v-for="(item, i) in cateListLevel1" :key="i">
+          <view :class="['cate-left-scroll-item', i === active? 'active': '']" @click="activeChange(i)">{{item.cat_name}}</view>
         </block>
-      </view>
-    </scroll-view>
+      </scroll-view>
+      <!-- 右侧的滑动区域 -->
+      <scroll-view class="cate-right-scroll" scroll-y="true" :style="{height: wh + 'px'}" :scroll-top="scrollTop">
+        <view class="cate-right-v2" v-for="(item2, i2) in cateListLevel2" :key="i2">
+          <!-- 二级标题 -->
+          <block v-if="item2.children">
+            <view class="cate-right-v2-title">/  {{item2.cat_name}}  /</view>
+            <!-- 三级元素 -->
+            <view class="cate-right-v3-list">
+              <view class="cate-right-v3-item" v-for="(item3, i3) in item2.children" :key="i3" @click="gotoGoodsList(item3.cat_id)">
+                <!-- 图片 -->
+                <image :src="item3.cat_icon.replace('dev', 'web')"></image>
+                <!-- 文本 -->
+                <text>{{item3.cat_name}}</text>
+              </view>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
   </view>
 </template>
 <script>
@@ -42,7 +46,7 @@
     },
     onLoad(){
       const sysInfo = uni.getSystemInfoSync()
-      this.wh = sysInfo.windowHeight
+      this.wh = sysInfo.windowHeight - 50
       console.log(sysInfo)
       this.getCateList()
     },
@@ -63,6 +67,11 @@
       gotoGoodsList(cat_id){
         uni.navigateTo({
           url:'/subpkg/goods_list/goods_list?cid=' + cat_id
+        })
+      },
+      gotoSearch(){
+        uni.navigateTo({
+          url:'/subpkg/search/search'
         })
       }
     }

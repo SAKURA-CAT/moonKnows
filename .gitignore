@@ -19,3 +19,6 @@ manifest.json
 # 构建的代码包
 unpackage/dist/
 .hbuilderx/
+
+# 忽略的组件库
+uni_modules/
