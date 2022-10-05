@@ -15,8 +15,11 @@
     methods: {
       
     },
-    onLoad(){
-      
+    onReady(){
+      this.visable = true
+      setTimeout(()=>{
+        this.visable = false
+      }, 3000)
     }
   }
 </script>

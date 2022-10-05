@@ -58,7 +58,7 @@
 		margin-bottom: 36upx;
 	}
 
-/* 适配safari或者chrome */
+  /* 适配safari或者chrome */
 	@-webkit-keyframes rotate {
 		from {
 			transform: rotatez(0deg);
