@@ -47,11 +47,12 @@
         }
           ,{
                     "path" : "goods_list/goods_list",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
+                    "style" :                                                                          
+                    {
+                        "navigationBarTitleText": "",
+                        "enablePullDownRefresh": true,
+                        "onReachBottomDistance": 150
+                    }
                 
                 }
                 ,{
