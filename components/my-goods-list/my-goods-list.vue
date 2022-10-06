@@ -3,6 +3,7 @@
     <view class="goods-item">
       <!-- 商品左侧的图片区域 -->
       <view class="goods-item-left">
+        <radio :checked="goods.goods_state" color="#C00000" style="margin-right: 10rpx;" v-if="showRadio" @click="radioClickHandler"></radio>
         <!-- 为了防止有一些图片不存在，使用一张默认的空图片 -->
         <image :src="goods.goods_small_logo || defaultPic" class="goods-left-pic" mode="widthFix"></image>
       </view>
@@ -13,6 +14,8 @@
         <view class="goods-right-info-box">
           <!-- 商品价格 -->
           <view class="goods-right-price">￥{{goods.goods_price | tofixed}}</view>
+          <!-- 商品数量 -->
+          <uni-number-box :min="1" :value="goods.goods_count" v-if="showNum" @change="numChangeHandler"></uni-number-box>
         </view>
       </view>
     </view>
@@ -28,6 +31,18 @@
         type: Object,
         defaul: {},
       },
+      // 是否展示图片左侧的 radio
+      showRadio: {
+        type: Boolean,
+        // 如果外界没有指定 show-radio 属性的值，则默认不展示 radio 组件
+        default: false,
+      },
+      // 是否展示numberBox
+      showNum: {
+        type: Boolean,
+        // 如果外界没有指定 show-radio 属性的值，则默认不展示 radio 组件
+        default: false,
+      },
     },
     data() {
       return {
@@ -36,7 +51,25 @@
       }
     },
     methods:{
-
+      // radio 组件的点击事件处理函数
+      radioClickHandler() {
+        // 通过 this.$emit() 触发外界通过 @ 绑定的 radio-change 事件，
+        // 同时把商品的 Id 和 勾选状态 作为参数传递给 radio-change 事件处理函数
+        this.$emit('radio-change', {
+          // 商品的 Id
+          goods_id: this.goods.goods_id,
+          // 商品最新的勾选状态
+          goods_state: !this.goods.goods_state
+        })
+      },
+      numChangeHandler(val){
+        this.$emit('num-change', {
+          // 商品的 Id
+          goods_id: this.goods.goods_id,
+          // 商品最新的勾选状态
+          goods_count: +val
+        })
+      }
     },
     filters: {
       // 把数字处理为带两位小数点的数字
@@ -54,8 +87,12 @@
   border-bottom: 1px solid #f0f0f0;
   .goods-item-left{
     margin-right: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     .goods-left-pic{
       width: 200rpx;
+      height: 200rpx;
       display: block;
     }
   }
@@ -66,9 +103,14 @@
     .goods-right-name{
       font-size: 28rpx;
     }
-    .goods-right-price{
-      font-size: 36rpx;
-      color: #c00000;
+    .goods-right-info-box{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .goods-right-price{
+        font-size: 36rpx;
+        color: #c00000;
+      }
     }
   }
 }

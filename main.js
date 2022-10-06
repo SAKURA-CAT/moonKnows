@@ -1,5 +1,6 @@
 import App from './App'
-
+// vuex注册
+import store from '@/store/store.js'
 // 导入网络请求的包
 import { $http } from '@escook/request-miniprogram'
 // 挂载此包
@@ -27,12 +28,15 @@ uni.$showMsg = function({title="数据请求失败!", duration=1500, icon="error
 }
 
 
+
 // #ifndef VUE3
 import Vue from 'vue'
 Vue.config.productionTip = false
 App.mpType = 'app'
 const app = new Vue({
-    ...App
+    ...App,
+    // 将 store 挂载到 Vue 实例上
+    store,
 })
 app.$mount()
 // #endif
