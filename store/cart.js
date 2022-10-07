@@ -81,7 +81,7 @@ export default {
       let c = 0
       // 循环统计商品的数量，累加到c之中
       state.cart.forEach((goods)=>{
-        c ++
+        c += goods.goods_count
       })
       return c
     }
