@@ -9,10 +9,7 @@
       </block>
       <!-- 不存在的话就给个不存在的提示 -->
       <block v-else>
-        <view class="goods-not-exists">
-          <uni-icons color="#dddddd" type="cart" size="100"></uni-icons>
-          <text>Oh,该类别暂时没有商品哦～</text>
-        </view>
+        <empty-cart></empty-cart>
       </block>
     </view>
   </view>
