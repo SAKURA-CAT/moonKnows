@@ -1,6 +1,6 @@
 <template>
   <view>
-    <my-loading-4 :visible="visable"></my-loading-4>
+    <my-loading-7 :visible="visable"></my-loading-7>
   </view>
 </template>
 
@@ -13,9 +13,9 @@
     },
     onLoad(){
       this.visable = true
-      setTimeout(()=>{
-        this.visable = false
-      }, 100000)
+      // setTimeout(()=>{
+      //   this.visable = false
+      // }, 100000)
     }
   }
 </script>
