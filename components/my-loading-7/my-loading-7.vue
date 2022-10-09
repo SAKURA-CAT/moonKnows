@@ -64,10 +64,10 @@
 }
 .running-cricle{
   --circle-diameter: 80rpx;
-  --circle-thickness: 8rpx;
-  --circle-anim-time-1: 2s;
+  --circle-thickness: 6rpx;
+  --circle-anim-time-1: 1s;
   --circle-anim-time-2: 2s;
-  --circle-anim-time-3: 2s;
+  --circle-anim-time-3: 1s;
   --circle-anim-time-4: 2s;
 }
 
@@ -212,7 +212,7 @@
   width: var(--circle-diameter);
   height: var(--circle-diameter);
   border-radius: 50%;
-  // border: var(--circle-thickness) solid transparent;
+  border: var(--circle-thickness) solid transparent;
   box-sizing: border-box;
   position: absolute;
 }
