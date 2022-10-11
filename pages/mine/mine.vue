@@ -1,6 +1,6 @@
 <template>
   <view>
-    <my-loading-7 :visible="visable"></my-loading-7>
+    <my-loading :visible="visable"></my-loading>
   </view>
 </template>
 

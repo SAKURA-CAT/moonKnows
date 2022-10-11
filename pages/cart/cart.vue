@@ -1,7 +1,5 @@
 <template>
   <view>
-    <my-loading-3 :visible="visable"></my-loading-3>
-    
   </view>
 </template>
 
