@@ -1,5 +1,6 @@
 <template>
   <view class="login-container">
+    <my-loading :visible="visible"></my-loading>
       <!-- 提示登录的图标 -->
       <uni-icons type="contact-filled" size="100" color="#AFAFAF"></uni-icons>
       <!-- 登录按钮 open-type="getUserInfo"表示希望获取用户的基本信息 -->
@@ -18,7 +19,7 @@
     },
     data() {
       return {
-        
+        visible: false
       };
     },
     methods:{
@@ -26,6 +27,10 @@
       ...mapMutations('m_user', ['updateUserInfo', 'updateToken', 'updateRedirectInfo']),
       // 获取微信用户的基本信息
       async getUserProfile() {
+        this.visible = true
+        setInterval(()=>{
+          this.visible = false
+        }, 4000)
         const [err, detail] = await uni.getUserProfile({
           desc: '完善用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，谨慎填写
         })
