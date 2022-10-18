@@ -64,6 +64,24 @@
                 }
                 
                 }
+                ,{
+                    "path" : "address_editor/address_editor",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "address_selector/address_selector",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
             ]
     }
 	],

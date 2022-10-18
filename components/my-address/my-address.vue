@@ -1,18 +1,18 @@
 <template>
   <view>
       <!-- 选择收货地址的盒子 -->
-      <view class="address-choose-box" v-if="JSON.stringify(address) === '{}'">
+      <view class="address-choose-box" v-if="!address_info.info.length">
         <button type="primary" size="mini" class="btnChooseAddress" @click="chooseAddress">请选择收货地址 +</button>
       </view>
     <!-- 渲染收货信息的盒子 -->
-    <view class="address-info-box" v-else @click="clearAddress">
+    <view class="address-info-box" v-else>
       <view class="row1">
         <view class="row1-left">
           <view class="username">收货人：<text>cunyue</text></view>
         </view>
         <view class="row1-right">
           <view class="phone">电话：<text>198xxxxxx48</text></view>
-          <uni-icons type="arrowright" size="16"></uni-icons>
+          <uni-icons type="arrowright" size="16" @click="chooseAddress"></uni-icons>
         </view>
       </view>
       <view class="row2">
@@ -30,8 +30,8 @@
   export default {
     name:"my-address",
     computed:{
-      ...mapState('m_user', ['address']),
-      ...mapGetters('m_user', ['addstr'])
+      ...mapGetters('m_user', ['addstr', 'address']),
+      ...mapState('m_user', ['address_info'])
     },
     data() {
       return {
@@ -39,23 +39,10 @@
       };
     },
     methods:{
-      ...mapMutations('m_user', ['updateAddress', 'clearAddress']),
       chooseAddress(){
-        const succ = {
-          errMsg:"chooseAddress:ok",
-          provinceName:"陕西省",
-          cityName: "西安市",
-          countyName:"长安区",
-          detailInfo:"西安电子科技大学",
-          natfonalcode: "510000",
-          postalCode: "510000",
-          telNumber: "198xxxxxx48",
-          userName: "cunyue"
-        }
-        if (succ.errMsg === 'chooseAddress:ok') {
-          // 为 data 里面的收货地址对象赋值
-          this.updateAddress(succ)
-        }
+        uni.navigateTo({
+          url:"/subpkg/address_selector/address_selector"
+        })
      } 
     }
   }
