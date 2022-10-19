@@ -8,7 +8,7 @@ export default{
     // 一个地址应该包含以下信息：provinceName、cityName、countyName、detailInfo、telNumber、userName，defaultSelected
     // 上述为info，还有其他的信息，当前选择index等...
     // address_info: JSON.parse(uni.getStorageSync('address_info') || '{"selected": 0, "info": []}'),
-    address_info: {"selected": 0, "info": [{"provinceName": "陕西省", "cityName": "西安市", "countyName": "长安区", "detailInfo": "西安电子科技大学南校区", "telNumber": "19829363248", "userName": "李抗", "defaultSelected": true}]},
+    address_info: {"selected": 0, "info": [{"provinceName": "陕西省", "cityName": "西安市", "countyName": "长安区", "detailInfo": "西安电子科技大学南校区家属区D区43幢1单元101", "telNumber": "19829363248", "userName": "李抗", "defaultSelected": true}]},
     // 登录成功后的token
     token: uni.getStorageSync('token') || '',
     // 用户的基本信息

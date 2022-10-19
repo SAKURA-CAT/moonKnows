@@ -89,6 +89,11 @@
     .row2-left {
       white-space: nowrap;
     }
+    .row2-right{
+      white-space: nowrap;
+      text-overflow:ellipsis;
+      overflow:hidden;
+    }
   }
 }
 
